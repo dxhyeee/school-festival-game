@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Gaegu', cursive;
+    overflow: hidden;
+    user-select: none;
+}
+
+#game-wrapper {
+    position: relative;
+    width: 800px;
+    height: 600px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    border-radius: 25px;
+    overflow: hidden;
+    transform-origin: center center;
+    transition: transform 0.2s;
+}
+
+canvas {
+    display: block;
+    background-color: transparent;
+}
+
+.ui-panel {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.95);
+    border: 4px solid #8B4513;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    display: none;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    pointer-events: auto;
+}
+
+#status-bar {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 248, 220, 0.9);
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 2px solid #8B4513;
+    display: flex;
+    gap: 15px;
+    font-size: 24px;
+    pointer-events: none;
+    z-index: 10;
+}
+.mission-item { opacity: 0.3; filter: grayscale(100%); transition: 0.3s; }
+.mission-complete { opacity: 1; filter: grayscale(0%); transform: scale(1.2); }
+
+#dialog-box {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 150px;
+    background: #fff8dc;
+    border: 5px solid #654321;
+    border-radius: 20px;
+    display: none;
+    padding: 20px;
+    font-size: 26px;
+    line-height: 1.4;
+    color: #4a3b2a;
+    z-index: 20;
+}
+#npc-name-tag {
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    background: #ff7f50;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 20px;
+    border: 2px solid white;
+}
+#dialog-next {
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    font-size: 18px;
+    color: #888;
+    animation: blink 1s infinite;
+}
+
+#fishing-game {
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 400px;
+    border-color: #4682B4;
+    z-index: 30;
+}
+#fishing-bar-bg {
+    width: 100%; height: 40px; background: #ddd;
+    border-radius: 20px; margin: 20px 0;
+    position: relative; overflow: hidden; border: 2px solid #999;
+}
+#fishing-target {
+    position: absolute; height: 100%; background: #90EE90; opacity: 0.7;
+}
+#fishing-cursor {
+    position: absolute; height: 100%; width: 10px; background: #ff4444;
+    left: 0; border-radius: 5px;
+}
+#fish-count {
+    font-size: 20px; font-weight: bold; color: #4682B4; margin-bottom: 10px;
+    white-space: pre-wrap;
+}
+
+#quiz-game {
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 500px;
+    border-color: #ff6347;
+    z-index: 30;
+}
+.quiz-btn {
+    width: 45%; padding: 15px; margin: 10px 2%;
+    font-family: 'Gaegu', cursive; font-size: 24px;
+    border: none; border-radius: 10px; cursor: pointer;
+    transition: 0.2s;
+}
+.btn-o { background: #90EE90; color: #006400; }
+.btn-x { background: #FFB6C1; color: #8B0000; }
+.quiz-btn:hover { transform: scale(1.05); }
+
+#ending-screen {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    color: white;
+    display: none;
+    flex-direction: column; justify-content: center; align-items: center;
+    z-index: 100;
+}
+#ending-screen h1 { font-size: 60px; margin-bottom: 20px; color: gold; }
+.restart-btn {
+    padding: 15px 30px; font-size: 24px; font-family: 'Gaegu';
+    background: #ff7f50; color: white; border: none; border-radius: 15px;
+    cursor: pointer; margin-top: 30px;
+}
+
+#help-text {
+    position: absolute; bottom: 200px; left: 50%; transform: translateX(-50%);
+    background: rgba(0,0,0,0.6); color: white; padding: 10px 20px;
+    border-radius: 20px; display: none; pointer-events: none;
+    z-index: 15;
+}
+
+.assets { display: none; }
+
+@keyframes blink { 50% { opacity: 0; } }
